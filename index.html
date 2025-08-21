@@ -128,30 +128,6 @@
 }
 }
 /* ===== OPORTUNIDADES — MOBILE HARD FIX (≤768px) ===== */
-@media (max-width: 768px) {
-  /* Grid em 1 coluna, conteúdo centralizado */
-  .opportunities-grid {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-    text-align: center !important;
-  }
-
-  /* Força cada card a centralizar título e texto */
-  .opportunity-item,
-  .opportunity-item h3,
-  .opportunity-item p {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  /* Limita largura do parágrafo para não ficar "estourado" */
-  .opportunity-item p {
-    max-width: 28rem !important;
-    line-height: 1.5 !important;
-  }
-}
 
 
     /* === SEÇÃO DE OPORTUNIDADES === */
@@ -404,6 +380,31 @@
   height: 3px;           /* altura da faixa; mude para o que quiser */
   background-color: #363636; /* tom de cinza claro */
 }
+@media (max-width: 768px) {
+  /* Grid em 1 coluna, conteúdo centralizado */
+  .opportunities-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Força cada card a centralizar título e texto */
+  .opportunity-item,
+  .opportunity-item h3,
+  .opportunity-item p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Limita largura do parágrafo para não ficar "estourado" */
+  .opportunity-item p {
+    max-width: 28rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
 
   </style>
 </head>
