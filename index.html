@@ -63,6 +63,31 @@
       margin-left: 40px;
     }
 
+.header-desktop {
+  justify-content: space-between;
+}
+
+.header-mobile {
+  display: none; /* escondido no desktop */
+}
+
+/* Mobile (até 768px: mostrar header reduzido) */
+@media (max-width: 768px) {
+  .header-desktop {
+    display: none; /* esconde o header completo */
+  }
+
+  .header-mobile {
+    display: flex; /* mostra o header reduzido */
+    justify-content: center; /* centraliza logo + nome */
+    gap: 10px;
+  }
+
+  .site-title {
+    font-size: 24px; /* menor para celular */
+  }
+}
+
     /* === SEÇÃO HERO COM IMAGEM DE FUNDO E TEXTO CENTRALIZADO === */
     .hero {
       background-image: url("banner1.png");
@@ -367,16 +392,24 @@
   </style>
 </head>
 <body>
-  <div class="header">
-    <a href="index.html" class="site-logo">
-      <img src="logo1.png" height="45" width="45" alt="Logo Grupo Vetorial">
-    </a>
-    <a href="index.html" class="site-title">Grupo Vetorial</a>
-    <a href="#quemsomos" class="button">Quem Somos</a>
-    <a href="#oportunidades" class="button">Saiba mais</a>
-    <a href="#Contato" class="button">Entre em contato</a>
-    <!--href="http://trabalheconosco" class="button">Trabalhe Conosco-->
-  </div>
+ <!-- Header completo (desktop) -->
+<div class="header header-desktop">
+  <a href="index.html" class="site-logo">
+    <img src="logo1.png" height="45" width="45" alt="Logo Grupo Vetorial">
+  </a>
+  <a href="index.html" class="site-title">Grupo Vetorial</a>
+  <a href="#quemsomos" class="button">Quem Somos</a>
+  <a href="#oportunidades" class="button">Saiba mais</a>
+  <a href="#Contato" class="button">Entre em contato</a>
+</div>
+
+<!-- Header reduzido (mobile) -->
+<div class="header header-mobile">
+  <a href="index.html" class="site-logo">
+    <img src="logo1.png" height="45" width="45" alt="Logo Grupo Vetorial">
+  </a>
+  <a href="index.html" class="site-title">Grupo Vetorial</a>
+</div>
 <div class="gray-bar"></div>
   <!-- === HERO === -->
   <div class="hero">
