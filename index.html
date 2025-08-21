@@ -369,50 +369,19 @@
         padding-right: 12px;
         box-sizing: border-box;
       }
-    }
-@media (max-width: 768px) {
-  /* empilha e centraliza a seção */
-  .about-content {
-    flex-direction: column;
+.about-content {
+    flex-direction: column;   /* empilha no mobile */
     align-items: center;
-    justify-content: center;
   }
-
-  /* slideshow ocupa toda a largura no mobile */
   .slideshow-container {
-    flex: 1 1 100% !important;
-    max-width: 100% !important;
+    flex: 1 1 100%;
+    max-width: 100%;
   }
-
-  /* esconde o bloco de texto lateral */
-  .side-text { 
-    display: none !important; 
+  .side-text {
+    display: none; /* esconde texto lateral no mobile */
   }
-
-  /* fallback: se houver qualquer outro filho além do slideshow, esconda */
-  .about-content > :not(.slideshow-container) {
-    display: none !important;
-  }
-
-  /* altura mais amigável do slideshow no mobile (opcional) */
- .slideshow {
-    width: 100%;
-    max-width: 100px;     /* limita a largura no centro */
-    height: auto;         /* altura automática, acompanha a proporção da imagem */
-    margin: 0 auto;       /* centraliza */
-  }
-
-  .slideshow img {
-    width: 100%;          /* faz a imagem ocupar todo o espaço disponível */
-    height: auto;         /* mantém proporção */
-    object-fit: contain;  /* evita cortes, ajusta dentro do box */
-  }
-
-  /* espaço no título do slideshow (opcional) */
-  .slideshow-container h3 {
-    margin-top: 16px;
-  }
-}
+    }
+/* ===== OPORTUNIDADES — full-bleed sem overflow ===== */
 
 /* 1) neutraliza o background antigo da própria seção */
 .opportunities {
