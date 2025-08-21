@@ -8,65 +8,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     /* ===== Guard-rails globais ===== */
     *, *::before, *::after { box-sizing: border-box; }
     img { max-width: 100%; height: auto; display: block; }
     html, body { max-width: 100%; overflow-x: hidden; }
-
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
-    }
+    body { margin: 0; padding: 0; background-color: #fff; }
 
     /* ===== Header ===== */
     .header {
       display: flex;
       align-items: center;
-      justify-content: space-between; /* desktop: tudo em linha */
+      justify-content: space-between;
       padding: 10px 20px;
       background-color: #fff;
     }
     .site-logo { display: block; margin: 0 10px 0 0; }
     .site-title {
-      font-size: 36px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: bold;
-      text-decoration: none;
-      color: #000;
       margin: 0 10px;
+      color: #000;
+      text-decoration: none;
+      font: 700 36px 'Montserrat', sans-serif;
+      transition: color .3s;
     }
-    .site-title:hover { color: #000080; transition: color .3s; }
+    .site-title:hover { color: #000080; }
     .button {
       display: flex;
       padding: 10px 20px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      text-decoration: none;
-      background-color: transparent;
       color: #000;
+      background: transparent;
       border-radius: 5px;
+      text-decoration: none;
+      font: 500 18px 'Poppins', sans-serif;
       transition: background-color .3s, color .3s;
     }
     .button:hover { background:#000; color:#fff; }
 
     /* ===== HERO ===== */
     .hero {
-      background-image: url("banner1.png");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
+      position: relative;
       min-height: 90vh;
+      padding: 0 24px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: #fff;
-      position: relative;
-      padding: 0 24px;
+      background: url("banner1.png") center/cover no-repeat;
     }
     .hero::before {
       content: "";
@@ -77,58 +67,57 @@
     }
     .hero > * { position: relative; z-index: 2; }
     .hero h1 {
-      font-size: clamp(28px, 6vw, 48px);
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.2;
       margin: 0 0 .5em;
+      font: 700 clamp(28px, 6vw, 48px) 'Montserrat', sans-serif;
+      line-height: 1.2;
       text-wrap: balance;
     }
     .hero p {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(16px, 4.2vw, 22px);
-      line-height: 1.5;
       margin: 0 0 1.2em;
+      font: 400 clamp(16px, 4.2vw, 22px) 'Montserrat', sans-serif;
+      line-height: 1.5;
     }
-    .hero .button {
-      background-color: rgba(0,0,0,0.2);
-      color: #fff;
-      padding: 10px 30px;
-    }
-    .hero .button:hover { background-color: #fff; color: #000; }
+    .hero .button { padding: 10px 30px; background: rgba(0,0,0,0.2); color: #fff; }
+    .hero .button:hover { background: #fff; color: #000; }
 
-    /* ===== OPORTUNIDADES (base) ===== */
+    /* ===== Oportunidades (fundo full-bleed sem overflow) ===== */
     .opportunities {
-      background-image: url("bannerlivro.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;      /* cobre toda a largura */
       position: relative;
-      width: 100%;                 /* sem 100vw: evita overflow */
-      left: 0;
-      margin-left: 0;
+      width: 100%;
+      padding: 80px 0;
       color: #fff;
       text-align: center;
-      padding: 80px 0;
+      background: none;          /* fundo vai no ::before */
+      overflow-x: clip;          /* evita arrasto lateral */
     }
     .opportunities::before {
       content: "";
       position: absolute;
-      inset: 0;
+      top: 0; bottom: 0;
+      left:  calc(50% - 50vw);
+      right: calc(50% - 50vw);
+      background: url("bannerlivro.png") center/cover no-repeat;
+      z-index: 0;
+    }
+    .opportunities::after {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      left:  calc(50% - 50vw);
+      right: calc(50% - 50vw);
       background: rgba(0,0,0,0.5);
       z-index: 1;
     }
     .opportunities > * { position: relative; z-index: 2; }
     .opportunities h2 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5em;
-      font-family: 'Montserrat', sans-serif;
+      margin: 0 0 .5em;
+      font: 700 2.5rem 'Montserrat', sans-serif;
     }
     .opportunities p.subtitle {
-      font-size: 1.125rem;
       max-width: 520px;
       margin: 0 auto 2em;
       line-height: 1.5;
-      font-family: 'Open Sans', sans-serif;
+      font: 400 1.125rem 'Open Sans', sans-serif;
     }
     .opportunities-grid {
       display: grid;
@@ -136,61 +125,45 @@
       gap: 2rem;
       max-width: 1050px;
       margin: 0 auto;
-      text-align: left; /* desktop: alinhado à esquerda nos cards */
+      text-align: left; /* desktop: cards à esquerda */
     }
     .opportunity-item h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5em;
-      font-family: 'Montserrat', sans-serif;
+      margin: 0 0 .5em;
+      font: 700 1.1rem 'Montserrat', sans-serif;
     }
     .opportunity-item p {
-      font-size: 0.9rem;
-      line-height: 1.4;
       max-width: 270px;
-      font-family: 'Open Sans', sans-serif;
+      line-height: 1.4;
+      font: 400 .9rem 'Open Sans', sans-serif;
     }
 
     /* ===== QUEM SOMOS / SLIDESHOW ===== */
-    .about {
-      padding: 20px 20px;
-      background-color: #fff;
-      text-align: center;
-    }
+    .about { padding: 20px; background: #fff; text-align: center; }
     .about-intro h2 {
-      font-size: 2.5rem;
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 0.5em;
-      color: #333;
+      margin: 0 0 .5em; color:#333;
+      font: 700 2.5rem 'Montserrat', sans-serif;
     }
     .about-intro p {
-      font-size: 1.125rem;
-      font-family: 'Open Sans', sans-serif;
-      max-width: 1000px;
-      margin: 0 auto 2em;
-      color: #555;
-      line-height: 1.3;
+      max-width: 1000px; margin: 0 auto 2em;
+      line-height: 1.3; color:#555;
+      font: 400 1.125rem 'Open Sans', sans-serif;
     }
     .about-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
     }
     .slideshow-container {
+      position: relative;
       flex: 0 0 55%;
       max-width: 50%;
       background: transparent;
       padding: 0;
-      position: relative;
     }
     .slideshow-container h3 {
+      margin: 60px 0 4px;
+      text-align: center; color:#333;
       font-family: 'Montserrat', sans-serif;
-      margin-bottom: 4px;
-      color: #333;
-      text-align: center;
-      margin-top: 60px;
     }
     .slideshow {
       position: relative;
@@ -200,79 +173,42 @@
     }
     .slideshow .slide {
       position: relative;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: fill;
-      display: none;       /* esconde todas por padrão */
+      display: none;
     }
     .slideshow .slide.active { display: block; }
-    .prev, .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px; height: 40px;
-      background: rgba(255,255,255,0.7);
-      border: none; border-radius: 50%;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .prev { left: 10px; }
-    .next { right: 10px; }
 
     .side-text { flex: 0 0 40%; }
     .side-text h3 {
-      font-size: 2rem;
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 10px;
-      color: #333;
-      text-align: center;
+      margin: 0 0 10px; color:#333; text-align:center;
+      font: 700 2rem 'Montserrat', sans-serif;
     }
     .side-text ul {
+      margin: 0; padding: 0;
       list-style: disc inside;
-      font-family: 'Open Sans', sans-serif;
-      color: #555;
-      line-height: 1.6;
-      text-align: left;
-      font-size: 1rem;
+      color:#555; line-height:1.6; text-align:left;
+      font: 400 1rem 'Open Sans', sans-serif;
     }
 
     /* ===== ORIGIN ===== */
-    .origin {
-      padding: 60px 20px;
-      background-color: #fff;
-      text-align: center;
-    }
+    .origin { padding: 60px 20px; background: #fff; text-align: center; }
     .origin-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      flex-wrap: wrap;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-around; gap: 40px;
     }
     .origin-content .text,
     .origin-content .image { flex: 1 1 45%; }
     .origin-content .text h2 {
-      font-size: 2rem;
-      font-family: 'Montserrat', sans-serif;
-      color: #333;
-      margin-bottom: 0.5em;
-      text-align: center;
+      margin: 0 0 .5em; color:#333; text-align:center;
+      font: 700 2rem 'Montserrat', sans-serif;
     }
     .origin-content .text p {
-      font-size: 1rem;
-      font-family: 'Open Sans', sans-serif;
-      color: #555;
-      line-height: 1.5;
-      text-align: justify;
+      margin: 0; color:#555; line-height:1.5; text-align: justify;
+      font: 400 1rem 'Open Sans', sans-serif;
     }
-    .origin-content .image img {
-      width: 90%;
-      height: auto;
-      border-radius: 1rem;
-    }
+    .origin-content .image img { width: 90%; height: auto; border-radius: 1rem; }
 
     /* ===== CONTATO ===== */
     .contact-form {
@@ -282,60 +218,29 @@
       text-align: center;
       font-family: 'Open Sans', sans-serif;
     }
-    .contact-form h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
+    .contact-form h2 { font: 700 2rem 'Montserrat', sans-serif; margin-bottom: 1rem; }
     .contact-form form { display: grid; gap: 1.5rem; }
-    .contact-form label {
-      display: block;
-      text-align: left;
-      font-size: 0.95rem;
-    }
-    .contact-form label span {
-      font-size: 0.8rem;
-      color: #888;
-    }
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
+    .contact-form label { display: block; text-align: left; font-size: .95rem; }
+    .contact-form label span { font-size: .8rem; color:#888; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      width: 100%; padding: .75rem; font-size: 1rem;
+      border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
       font-family: inherit;
     }
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
     .contact-form button {
-      justify-self: end;
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #000;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+      justify-self: end; padding: .75rem 2rem; font: 700 1rem 'Montserrat', sans-serif;
+      background:#000; color:#fff; border: none; border-radius: 4px; cursor: pointer;
     }
-    .contact-form button:hover { background-color: #333; }
+    .contact-form button:hover { background:#333; }
 
-    .gray-bar {
-      width: 100%;
-      height: 3px;
-      background-color: #363636;
-    }
+    .gray-bar { width: 100%; height: 3px; background:#363636; }
 
     /* ===== MOBILE (≤768px) ===== */
     @media (max-width: 768px) {
-      /* Header: some botões, centraliza logo+título */
-      .header a.button { display: none !important; }
+      /* Header */
       .header { justify-content: center; gap: 10px; }
+      .header a.button { display: none !important; }
       .site-title { font-size: 24px; margin: 0; text-align: center; }
       .site-logo { margin: 0; }
 
@@ -343,11 +248,8 @@
       .hero { min-height: 60vh; padding: 0 16px; }
       .hero .button { display: inline-flex; }
 
-      /* Oportunidades: 1 coluna, centralizado, sem overflow */
-      .opportunities {
-        padding-left: max(16px, env(safe-area-inset-left));
-        padding-right: max(16px, env(safe-area-inset-right));
-      }
+      /* Oportunidades */
+      .opportunities { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
       .opportunities-grid {
         grid-template-columns: 1fr !important;
         justify-items: center !important;
@@ -355,207 +257,51 @@
         gap: 1.2rem;
       }
       .opportunity-item { width: 100%; max-width: 32rem; padding-inline: 8px; }
-      .opportunity-item h3,
+      .opportunity-item h3, .opportunity-item p { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
       .opportunity-item p {
-        text-align: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+        width: 100%; max-width: 28rem; line-height: 1.5;
+        padding-left: 12px; padding-right: 12px; box-sizing: border-box;
       }
-      .opportunity-item p {
-        width: 100%;
-        max-width: 28rem;
-        line-height: 1.5;
-        padding-left: 12px;
-        padding-right: 12px;
-        box-sizing: border-box;
+
+      /* Slideshow: tamanho estável + margem lateral */
+      .about-content { flex-direction: column; align-items: center; }
+      .slideshow-container {
+        flex: 1 1 100%; max-width: 100%;
+        display: flex; flex-direction: column; align-items: center;
+        padding: 0 16px;
       }
-.about-content {
-  flex-direction: column;   /* empilha no mobile */
-  align-items: center;
-}
+      .slideshow {
+        width: 100%; max-width: 500px;
+        aspect-ratio: 16 / 9; height: auto;
+        margin: 0 auto; position: relative; overflow: hidden; border-radius: 8px; background: #fff;
+      }
+      .slideshow .slide {
+        position: absolute !important; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: contain !important;
+        display: block !important;
+        opacity: 0; transition: opacity .3s ease;
+        background: transparent;
+      }
+      .slideshow .slide.active { opacity: 1; }
+      .side-text { display: none !important; }
 
-.slideshow-container {
-  flex: 1 1 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.slideshow {
-  width: 100%;
-  max-width: 500px;   /* limite de largura no mobile */
-  height: auto;       /* altura automática */
-  margin: 0 auto;
-}
-
-.slideshow img {
-  width: 100%;
-  height: auto;
-  object-fit: contain; /* mantém proporção e não corta */
-}
-
-.side-text {
-  display: none; /* esconde texto lateral no mobile */
-}
-
-/* 1) neutraliza o background antigo da própria seção */
-.opportunities {
-  position: relative;
-  background: none !important;   /* remove o background-image anterior */
-  overflow-x: clip;              /* evita qualquer arrasto lateral */
-}
-
-/* 2) fundo que sempre toca as bordas do viewport (esq/dir) */
-.opportunities::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  /* este calc estica exatamente do lado esquerdo ao direito do viewport */
-  left:  calc(50% - 50vw);
-  right: calc(50% - 50vw);
-
-  background: url("bannerlivro.png") center / cover no-repeat;
-  z-index: 0;
-}
-
-/* 3) sobreposição escura por cima do fundo (igual ao que você tinha) */
-.opportunities::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left:  calc(50% - 50vw);
-  right: calc(50% - 50vw);
-  background: rgba(0,0,0,0.5);
-  z-index: 1;
-}
-
-/* 4) garante que o conteúdo fique acima do fundo/overlay */
-.opportunities > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* 5) ajustes no mobile mantidos (centralização + respiro) */
-@media (max-width: 768px) {
-  .opportunities {
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
-  }
-  .opportunities-grid {
-    grid-template-columns: 1fr !important;
-    justify-items: center !important;
-    text-align: center !important;
-    gap: 1.2rem;
-  }
-  .opportunity-item { width: 100%; max-width: 32rem; padding-inline: 8px; }
-  .opportunity-item h3,
-  .opportunity-item p {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .opportunity-item p {
-    width: 100%;
-    max-width: 28rem;
-    line-height: 1.5;
-    padding-left: 12px;
-    padding-right: 12px;
-    box-sizing: border-box;
-  }
- .about-content {
-    flex-direction: column;   /* empilha no mobile */
-    align-items: center;
-  }
-
-.about-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* margem lateral no mobile */
-  .slideshow-container {
-    flex: 1 1 100%;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 16px;
-  }
-
-  /* mantém tamanho constante usando aspect-ratio */
-  .slideshow {
-    width: 100%;
-    max-width: 500px;          /* limite de largura */
-    aspect-ratio: 16 / 9;      /* controla a ALTURA automaticamente */
-    height: auto;              /* a altura vem do aspect-ratio */
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;        /* opcional */
-    background: #fff;          /* fundo para "letterbox" */
-  }
-
-  /* empilha todas as imagens no mesmo box para não mudar a altura */
-  .slideshow .slide {
-    position: absolute !important;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain !important; /* não distorce, cabe dentro */
-    display: block !important;      /* ignora display:none da base */
-    opacity: 0;
-    transition: opacity .3s ease;
-    background: transparent;
-  }
-
-  /* só a ativa fica visível */
-  .slideshow .slide.active {
-    opacity: 1;
-  }
-
-  /* esconde o texto lateral no mobile */
-  .side-text {
-    display: none !important;
-  }
-  .origin-content {
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 24px !important;
-  }
-
-  .origin-content .image {
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;  /* centraliza o conteúdo */
-  }
-
-  .origin-content .image img {
-    display: block !important;
-    width: min(90%, 540px) !important;   /* margem lateral + limite máx. */
-    max-width: 540px !important;
-    height: auto !important;
-    margin: 0 auto !important;           /* garante centralização */
-  }
-
-  .origin-content .text {
-    width: 100% !important;
-    padding: 0 16px !important;          /* respiro nas bordas */
-  }
-
-  .origin-content .text p {
-    text-align: center !important;       /* deixa de justificar no mobile */
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-}	
-}
-
+      /* Origin: centraliza imagem e texto */
+      .origin-content {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 24px !important;
+      }
+      .origin-content .image {
+        width: 100% !important; display: flex !important; justify-content: center !important;
+      }
+      .origin-content .image img {
+        width: min(90%, 540px) !important; max-width: 540px !important; height: auto !important; margin: 0 auto !important;
+      }
+      .origin-content .text { width: 100% !important; padding: 0 16px !important; }
+      .origin-content .text p { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+    }
   </style>
 </head>
 <body>
