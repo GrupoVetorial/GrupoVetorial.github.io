@@ -418,7 +418,10 @@
 }
   }
 }
-
+/* Guard-rails globais */
+*, *::before, *::after { box-sizing: border-box; }
+img, video { max-width: 100%; height: auto; display: block; }
+html, body { overflow-x: hidden; }
 html, body {
   max-width: 100%;
   overflow-x: hidden;
