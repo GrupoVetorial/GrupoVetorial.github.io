@@ -470,34 +470,57 @@
     align-items: center;
   }
 
+.about-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* margem lateral no mobile */
   .slideshow-container {
     flex: 1 1 100%;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 16px; /* margem lateral no mobile */
+    padding: 0 16px;
   }
 
+  /* mantém tamanho constante usando aspect-ratio */
   .slideshow {
     width: 100%;
-    max-width: 500px;    /* limite de largura */
-    height: 280px;       /* altura fixa p/ não "pular" */
+    max-width: 500px;          /* limite de largura */
+    aspect-ratio: 16 / 9;      /* controla a ALTURA automaticamente */
+    height: auto;              /* a altura vem do aspect-ratio */
     margin: 0 auto;
-    overflow: hidden;    /* corta se alguma imagem passar */
-    border-radius: 8px;  /* opcional: cantos arredondados */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;        /* opcional */
+    background: #fff;          /* fundo para "letterbox" */
   }
 
-  .slideshow img {
+  /* empilha todas as imagens no mesmo box para não mudar a altura */
+  .slideshow .slide {
+    position: absolute !important;
+    inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;  /* mantém proporção dentro da área */
-    background: #fff;     /* fundo fixo p/ imagens menores */
+    object-fit: contain !important; /* não distorce, cabe dentro */
+    display: block !important;      /* ignora display:none da base */
+    opacity: 0;
+    transition: opacity .3s ease;
+    background: transparent;
   }
 
-  .side-text {
-    display: none; /* esconde texto lateral no mobile */
+  /* só a ativa fica visível */
+  .slideshow .slide.active {
+    opacity: 1;
   }
+
+  /* esconde o texto lateral no mobile */
+  .side-text {
+    display: none !important;
+  }
+}
 }
 
   </style>
