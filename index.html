@@ -130,32 +130,34 @@
   .hero .button { 
     display: inline-flex !important;
   }
- .opportunities { 
-    padding: 56px 16px;
-    text-align: center; 
-  }
-
-  .opportunities h2,
+.opportunities h2,
   .opportunities p.subtitle {
-    text-align: center;
+    text-align: center !important;
     margin-left: auto;
     margin-right: auto;
   }
 
+  /* Grid em 1 coluna e itens centralizados */
   .opportunities-grid {
-    display: grid;
-    grid-template-columns: 1fr;   /* apenas 1 coluna no celular */
+    grid-template-columns: 1fr !important;
+    justify-items: center;          /* centraliza cada card na coluna */
+    text-align: center !important;  /* neutraliza text-align:left da grid */
     gap: 1.2rem;
   }
 
-  .opportunity-item {
-    text-align: center;
+  /* Garante que o conteúdo do card herde o centro */
+  .opportunities-grid .opportunity-item {
+    text-align: inherit !important;
+    width: 100%;
+    max-width: 32rem;               /* largura confortável para leitura */
   }
 
-  .opportunity-item p {
+  /* Parágrafos centralizados e com largura limitada */
+  .opportunities-grid .opportunity-item p {
+    margin-left: auto !important;
+    margin-right: auto !important;
     max-width: 28rem;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.45;
   }
 }
 }
