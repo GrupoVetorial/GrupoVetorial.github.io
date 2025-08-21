@@ -520,22 +520,39 @@
   .side-text {
     display: none !important;
   }
-.origin-content {
-    flex-direction: column;
-    align-items: center;   /* centraliza o bloco */
-    text-align: center;    /* centraliza textos */
+  .origin-content {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 24px !important;
+  }
+
+  .origin-content .image {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;  /* centraliza o conteúdo */
   }
 
   .origin-content .image img {
-    width: 90%;
-    max-width: 400px;      /* limite para não crescer demais */
-    margin: 0 auto;        /* centraliza a imagem */
-    display: block;
+    display: block !important;
+    width: min(90%, 540px) !important;   /* margem lateral + limite máx. */
+    max-width: 540px !important;
+    height: auto !important;
+    margin: 0 auto !important;           /* garante centralização */
+  }
+
+  .origin-content .text {
+    width: 100% !important;
+    padding: 0 16px !important;          /* respiro nas bordas */
   }
 
   .origin-content .text p {
-    text-align: center;    /* parágrafos centralizados no mobile */
+    text-align: center !important;       /* deixa de justificar no mobile */
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
+}
 }	
 }
 
