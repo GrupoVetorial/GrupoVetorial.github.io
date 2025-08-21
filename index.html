@@ -126,38 +126,48 @@
     display: none !important;
   }
 
-  /* e garanta que o botão da hero apareça */
-  .hero .button { 
-    display: inline-flex !important;
-  }
-.opportunities h2,
-  .opportunities p.subtitle {
+ /* Desliga o hack de full-bleed no mobile para permitir centralização */
+  #oportunidades.opportunities {
+    width: auto !important;
+    left: auto !important;
+    margin-left: 0 !important;
+    padding: 56px 16px !important;
     text-align: center !important;
-    margin-left: auto;
-    margin-right: auto;
   }
 
-  /* Grid em 1 coluna e itens centralizados */
-  .opportunities-grid {
+  /* Força 1 coluna e centraliza os itens da grid */
+  #oportunidades.opportunities .opportunities-grid {
     grid-template-columns: 1fr !important;
-    justify-items: center;          /* centraliza cada card na coluna */
-    text-align: center !important;  /* neutraliza text-align:left da grid */
-    gap: 1.2rem;
+    justify-items: center !important;
+    gap: 1.2rem !important;
+    text-align: center !important; /* vence o text-align:left anterior */
   }
 
-  /* Garante que o conteúdo do card herde o centro */
-  .opportunities-grid .opportunity-item {
-    text-align: inherit !important;
+  /* Centraliza conteúdo de cada card */
+  #oportunidades.opportunities .opportunities-grid .opportunity-item {
+    text-align: center !important;
     width: 100%;
-    max-width: 32rem;               /* largura confortável para leitura */
+    max-width: 32rem; /* largura confortável */
   }
 
-  /* Parágrafos centralizados e com largura limitada */
-  .opportunities-grid .opportunity-item p {
+  /* Título e texto dos cards centralizados e com largura limitada */
+  #oportunidades.opportunities .opportunity-item h3,
+  #oportunidades.opportunities .opportunity-item p {
+    text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    max-width: 28rem;
-    line-height: 1.45;
+  }
+  #oportunidades.opportunities .opportunity-item p {
+    max-width: 28rem !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Centraliza título e subtítulo da seção */
+  #oportunidades.opportunities h2,
+  #oportunidades.opportunities p.subtitle {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 }
