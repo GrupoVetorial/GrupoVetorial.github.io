@@ -406,18 +406,23 @@
   }
 
   /* Limita largura do parágrafo para não ficar "estourado" */
-  .opportunity-item p {
-    max-width: 28rem !important;
-    line-height: 1.5 !important;
+.opportunity-item p {
+  width: 100%;
+  max-width: 28rem;   /* continua limitando em telas grandes */
+  line-height: 1.5 !important;
   padding-left: 12px;
   padding-right: 12px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center; /* se quiser tudo alinhado no meio */
+  box-sizing: border-box; /* padding conta dentro da largura */
+}
   }
 }
 
-
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
   </style>
 </head>
 <body>
