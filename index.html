@@ -465,6 +465,39 @@
     padding-right: 12px;
     box-sizing: border-box;
   }
+ .about-content {
+    flex-direction: column;   /* empilha no mobile */
+    align-items: center;
+  }
+
+  .slideshow-container {
+    flex: 1 1 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px; /* margem lateral no mobile */
+  }
+
+  .slideshow {
+    width: 100%;
+    max-width: 500px;    /* limite de largura */
+    height: 280px;       /* altura fixa p/ não "pular" */
+    margin: 0 auto;
+    overflow: hidden;    /* corta se alguma imagem passar */
+    border-radius: 8px;  /* opcional: cantos arredondados */
+  }
+
+  .slideshow img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* mantém proporção dentro da área */
+    background: #fff;     /* fundo fixo p/ imagens menores */
+  }
+
+  .side-text {
+    display: none; /* esconde texto lateral no mobile */
+  }
 }
 
   </style>
