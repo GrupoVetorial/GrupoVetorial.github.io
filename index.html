@@ -121,6 +121,16 @@
   .hero p  { font-size: clamp(14px, 4.8vw, 18px); }
   .hero .button { 
     display: inline-flex;     /* força o botão da hero a aparecer */
+  /* esconda apenas os botões do header */
+  .header a.button { 
+    display: none !important;
+  }
+
+  /* e garanta que o botão da hero apareça */
+  .hero .button { 
+    display: inline-flex !important;
+  }
+}
 }
 
     /* === SEÇÃO DE OPORTUNIDADES === */
