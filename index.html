@@ -1,77 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Grupo Vetorial</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grupo Vetorial</title>
   <meta name="description" content="Oferecemos mentoria em vestibulares de exatas, concursos públicos e reforço em matemática, física e programação. Saiba mais!">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* ===== Guard-rails globais ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    img { max-width: 100%; height: auto; display: block; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+
     body {
       margin: 0;
       padding: 0;
-      background-color: white;
+      background-color: #fff;
     }
 
- .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* desktop: tudo em linha */
-  padding: 10px 20px;
-  background-color: #fff;
-}
+    /* ===== Header ===== */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* desktop: tudo em linha */
+      padding: 10px 20px;
+      background-color: #fff;
+    }
+    .site-logo { display: block; margin: 0 10px 0 0; }
+    .site-title {
+      font-size: 36px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      text-decoration: none;
+      color: #000;
+      margin: 0 10px;
+    }
+    .site-title:hover { color: #000080; transition: color .3s; }
+    .button {
+      display: flex;
+      padding: 10px 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      background-color: transparent;
+      color: #000;
+      border-radius: 5px;
+      transition: background-color .3s, color .3s;
+    }
+    .button:hover { background:#000; color:#fff; }
 
-/* Logo e Título (sem margens gigantes) */
-.site-logo { display: block; margin: 0 10px 0 0; }
-.site-title {
-  font-size: 36px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  text-decoration: none;
-  color: #000;
-  margin: 0 10px;            /* REMOVIDO margin-right:600px */
-}
-.site-title:hover { color: #000080; transition: color .3s; }
-
-.button {
-  display: flex;
-  padding: 10px 20px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  text-decoration: none;
-  background-color: transparent;
-  color: #000;
-  border-radius: 5px;
-  transition: background-color .3s, color .3s;
-}
-.button:hover { background:#000; color:#fff; }
-
-/* ===== Mobile (até 768px) ===== */
-@media (max-width: 768px) {
-  /* Some com os botões e centralize logo + nome */
-  .button { display: none; }
-  .header {
-    justify-content: center;   /* centraliza tudo */
-    gap: 10px;
-  }
-  .site-logo { margin: 0; }
-  .site-title {
-    font-size: 24px;
-    margin: 0;
-    text-align: center;
-  }
-}
-
-    /* === SEÇÃO HERO COM IMAGEM DE FUNDO E TEXTO CENTRALIZADO === */
+    /* ===== HERO ===== */
     .hero {
       background-image: url("banner1.png");
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
-      min-height: 90vh; 
+      min-height: 90vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -79,67 +66,46 @@
       text-align: center;
       color: #fff;
       position: relative;
-      padding: 0 24px; 
+      padding: 0 24px;
     }
-
-/* Botão sobre a imagem */
-.hero .button {
-  background-color: rgba(0,0,0,0.2);
-  color: #fff;
-  padding: 10px 30px;
-}
-.hero .button:hover { background-color: #fff; color: #000; }
-
-    .hero h1 {
-      font-size: 2rem;
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.0;
-      margin: 0.5em 0;
-      text-wrap: balance; 
-    }
-.hero p {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(16px, 4.2vw, 22px);
-  line-height: 1.5;            /* antes: 0.25 */
-  margin: 0 0 1.2em;
-}
     .hero::before {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      inset: 0;
       background: rgba(0,0,0,0.5);
       z-index: 1;
     }
-    .hero > * {
-      position: relative;
-      z-index: 2;
+    .hero > * { position: relative; z-index: 2; }
+    .hero h1 {
+      font-size: clamp(28px, 6vw, 48px);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.2;
+      margin: 0 0 .5em;
+      text-wrap: balance;
     }
+    .hero p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(16px, 4.2vw, 22px);
+      line-height: 1.5;
+      margin: 0 0 1.2em;
+    }
+    .hero .button {
+      background-color: rgba(0,0,0,0.2);
+      color: #fff;
+      padding: 10px 30px;
+    }
+    .hero .button:hover { background-color: #fff; color: #000; }
 
-@media (max-width: 768px) {
-  .hero { min-height: 60vh; padding: 0 16px; }
-  .hero h1 { font-size: clamp(24px, 8vw, 34px); }
-  .hero p  { font-size: clamp(14px, 4.8vw, 18px); }
-  .hero .button { 
-    display: inline-flex;     /* força o botão da hero a aparecer */
-  /* esconda apenas os botões do header */
-  .header a.button { 
-    display: none !important;
-  }
-}
-}
-/* ===== OPORTUNIDADES — MOBILE HARD FIX (≤768px) ===== */
-
-
-    /* === SEÇÃO DE OPORTUNIDADES === */
+    /* ===== OPORTUNIDADES (base) ===== */
     .opportunities {
       background-image: url("bannerlivro.png");
       background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
+      background-position: center;
+      background-size: cover;      /* cobre toda a largura */
       position: relative;
-      width: 100vw;
-      left: 50%;
-      margin-left: -50vw;
+      width: 100%;                 /* sem 100vw: evita overflow */
+      left: 0;
+      margin-left: 0;
       color: #fff;
       text-align: center;
       padding: 80px 0;
@@ -147,14 +113,11 @@
     .opportunities::before {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      inset: 0;
       background: rgba(0,0,0,0.5);
       z-index: 1;
     }
-    .opportunities > * {
-      position: relative;
-      z-index: 2;
-    }
+    .opportunities > * { position: relative; z-index: 2; }
     .opportunities h2 {
       font-size: 2.5rem;
       margin-bottom: 0.5em;
@@ -173,7 +136,7 @@
       gap: 2rem;
       max-width: 1050px;
       margin: 0 auto;
-      text-align: left;
+      text-align: left; /* desktop: alinhado à esquerda nos cards */
     }
     .opportunity-item h3 {
       font-size: 1.1rem;
@@ -187,7 +150,7 @@
       font-family: 'Open Sans', sans-serif;
     }
 
-    /* === SEÇÃO QUEM SOMOS E SLIDESHOW === */
+    /* ===== QUEM SOMOS / SLIDESHOW ===== */
     .about {
       padding: 20px 20px;
       background-color: #fff;
@@ -235,38 +198,29 @@
       width: 100%;
       height: 350px;
     }
-     .slideshow .slide {
- 	 position: relative;
-	 top: 0; left: 0;
- 	 width: 100%;
- 	 height: 100%;
-  	object-fit: fill;
- 	 display: none;       /* esconde todas por padrão */
-}
-
-	.slideshow .slide.active {
- 	   display: block;      /* só a “active” aparece */
+    .slideshow .slide {
+      position: relative;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: none;       /* esconde todas por padrão */
     }
-.prev, .next {
-  position: absolute;       /* posicionamento relativo ao .slideshow-container */
-  top: 50%;                 /* 50% do alto do container */
-  transform: translateY(-50%); /* centraliza verticalmente */
-  width: 40px;
-  height: 40px;
-  background: rgba(255,255,255,0.7);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.prev { left: 10px; }       /* 10px da borda esquerda */
-.next { right: 10px; }      /* 10px da borda direita */
-
-    .side-text {
-      flex: 0 0 40%;
+    .slideshow .slide.active { display: block; }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.7);
+      border: none; border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
     }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .side-text { flex: 0 0 40%; }
     .side-text h3 {
       font-size: 2rem;
       font-family: 'Montserrat', sans-serif;
@@ -283,7 +237,7 @@
       font-size: 1rem;
     }
 
-    /* === NOVA SESSÃO ORIGEM === */
+    /* ===== ORIGIN ===== */
     .origin {
       padding: 60px 20px;
       background-color: #fff;
@@ -299,9 +253,7 @@
       flex-wrap: wrap;
     }
     .origin-content .text,
-    .origin-content .image {
-      flex: 1 1 45%;
-    }
+    .origin-content .image { flex: 1 1 45%; }
     .origin-content .text h2 {
       font-size: 2rem;
       font-family: 'Montserrat', sans-serif;
@@ -321,148 +273,147 @@
       height: auto;
       border-radius: 1rem;
     }
- .contact-form {
-    max-width: 800px;
-    margin: 60px auto;
-    padding: 0 20px;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-  }
-  .contact-form h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  .contact-form form {
-    display: grid;
-    gap: 1.5rem;
-  }
-  .contact-form label {
-    display: block;
-    text-align: left;
-    font-size: 0.95rem;
-  }
-  .contact-form label span {
-    font-size: 0.8rem;
-    color: #888;
-  }
-  .contact-form input,
-  .contact-form select,
-  .contact-form textarea {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-family: inherit;
-  }
-  .contact-form textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-  .contact-form button {
-    justify-self: end;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #000;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .contact-form button:hover {
-    background-color: #333;
-  }
-.gray-bar {
-  width: 100%;
-  height: 3px;           /* altura da faixa; mude para o que quiser */
-  background-color: #363636; /* tom de cinza claro */
-}
-@media (max-width: 768px) {
-  /* Grid em 1 coluna, conteúdo centralizado */
-  .opportunities {
-    width: 100% !important;
-    left: 0 !important;
-    margin-left: 0 !important;
 
-    /* Mantém respiro para o conteúdo */
-    padding-left: max(16px, env(safe-area-inset-left));
-    padding-right: max(16px, env(safe-area-inset-right));
+    /* ===== CONTATO ===== */
+    .contact-form {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+      font-family: 'Open Sans', sans-serif;
+    }
+    .contact-form h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .contact-form form { display: grid; gap: 1.5rem; }
+    .contact-form label {
+      display: block;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .contact-form label span {
+      font-size: 0.8rem;
+      color: #888;
+    }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-form button {
+      justify-self: end;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .contact-form button:hover { background-color: #333; }
 
-    /* Ajusta fundo */
-    background-size: cover;      /* cobre toda a área */
-    background-position: center; /* centraliza a imagem */
-    background-repeat: no-repeat;  .opportunities-grid .opportunity-item {
-    padding-inline: 8px;
-  }
+    .gray-bar {
+      width: 100%;
+      height: 3px;
+      background-color: #363636;
+    }
 
-  /* Força cada card a centralizar título e texto */
-  .opportunity-item,
-  .opportunity-item h3,
-  .opportunity-item p {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
+    /* ===== MOBILE (≤768px) ===== */
+    @media (max-width: 768px) {
+      /* Header: some botões, centraliza logo+título */
+      .header a.button { display: none !important; }
+      .header { justify-content: center; gap: 10px; }
+      .site-title { font-size: 24px; margin: 0; text-align: center; }
+      .site-logo { margin: 0; }
 
-  /* Limita largura do parágrafo para não ficar "estourado" */
-  .opportunity-item p {
-    max-width: 28rem !important;
-    line-height: 1.5 !important;
-  padding-left: 12px;
-  padding-right: 12px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center; /* se quiser tudo alinhado no meio */
-  }
-}
+      /* Hero */
+      .hero { min-height: 60vh; padding: 0 16px; }
+      .hero .button { display: inline-flex; }
 
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
+      /* Oportunidades: 1 coluna, centralizado, sem overflow */
+      .opportunities {
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      .opportunities-grid {
+        grid-template-columns: 1fr !important;
+        justify-items: center !important;
+        text-align: center !important;
+        gap: 1.2rem;
+      }
+      .opportunity-item { width: 100%; max-width: 32rem; padding-inline: 8px; }
+      .opportunity-item h3,
+      .opportunity-item p {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .opportunity-item p {
+        width: 100%;
+        max-width: 28rem;
+        line-height: 1.5;
+        padding-left: 12px;
+        padding-right: 12px;
+        box-sizing: border-box;
+      }
+    }
   </style>
 </head>
 <body>
-<div class="header">
-  <a href="index.html" class="site-logo">
-    <img src="logo1.png" height="45" width="45" alt="Logo Grupo Vetorial">
-  </a>
-  <a href="index.html" class="site-title">Grupo Vetorial</a>
-  <a href="#quemsomos" class="button">Quem Somos</a>
-  <a href="#oportunidades" class="button">Saiba mais</a>
-  <a href="#Contato" class="button">Entre em contato</a>
-</div>
 
-  <!-- === HERO === -->
+  <!-- Header -->
+  <div class="header">
+    <a href="index.html" class="site-logo">
+      <img src="logo1.png" height="45" width="45" alt="Logo Grupo Vetorial">
+    </a>
+    <a href="index.html" class="site-title">Grupo Vetorial</a>
+    <a href="#quemsomos" class="button">Quem Somos</a>
+    <a href="#oportunidades" class="button">Saiba mais</a>
+    <a href="#Contato" class="button">Entre em contato</a>
+  </div>
+
+  <!-- HERO -->
   <div class="hero">
     <h1>Aprender, crescer, vencer.</h1>
     <p>Aulas particulares personalizadas para o que você precisar, quando você precisar.</p>
     <a href="#Contato" class="button">Entre em contato!</a>
   </div>
 
-<section id="quemsomos" class="about">
+  <!-- QUEM SOMOS -->
+  <section id="quemsomos" class="about">
     <div class="about-intro">
       <h2>Quem Somos?</h2>
       <p>O Grupo Vetorial é uma iniciativa que acredita que o conhecimento transforma vidas. Somos uma escola de aulas particulares dedicada a oferecer um ensino personalizado e de alta qualidade, com foco em conteúdos de ensino médio e cursinho.</p>
     </div>
-  <!-- === NOVA SESSÃO ORIGEM === -->
-  <section class="origin">
-    <div class="origin-content">
-      <div class="text">
-        <h2>De onde surgiu o Grupo Vetorial?</h2>
-        <p>	O Grupo surge a partir da percepção de que o estudo e a caminhada à aprovação em uma prova não precisa ser um processo repleto de incertezas e inseguranças. Em cima dessa ideia, o Grupo Vetorial busca conectar pessoas que querem ajudar com os estudantes para não só ensinar mas apoiar os mesmos e potencializar o acesso ao conhecimento.</p>
+
+    <!-- ORIGEM -->
+    <section class="origin">
+      <div class="origin-content">
+        <div class="text">
+          <h2>De onde surgiu o Grupo Vetorial?</h2>
+          <p>O Grupo surge a partir da percepção de que o estudo e a caminhada à aprovação em uma prova não precisa ser um processo repleto de incertezas e inseguranças. Em cima dessa ideia, o Grupo Vetorial busca conectar pessoas que querem ajudar com os estudantes para não só ensinar mas apoiar os mesmos e potencializar o acesso ao conhecimento.</p>
+        </div>
+        <div class="image">
+          <img src="origem.png" alt="Origem do Grupo Vetorial">
+        </div>
       </div>
-      <div class="image">
-        <img src="origem.png" alt="Origem do Grupo Vetorial">
-      </div>
-    </div>
+    </section>
   </section>
 
-
-  <!-- === SEÇÃO DE OPORTUNIDADES === -->
+  <!-- OPORTUNIDADES -->
   <section id="oportunidades" class="opportunities">
     <h2>Muitas oportunidades para você</h2>
     <p class="subtitle">Desenvolva-se no nosso instituto aprendendo e ensinando. Ensine o que você sabe e aprenda o que ainda não conhece.</p>
@@ -493,44 +444,81 @@ html, body {
       </div>
     </div>
   </section>
- <!-- === SEÇÃO QUEM SOMOS E SLIDESHOW === -->
-  
-    <div class="about-content">
-      <div class="slideshow-container">
-        <h3>Notas desenvolvidas pelos professores</h3>
-        <div class="slideshow">
-          <img src="img1.png" class="slide active" alt="Slide 1">
-          <img src="img2.png" class="slide" alt="Slide 2">
-          <img src="img3.png" class="slide" alt="Slide 3">
-          <img src="img4.png" class="slide" alt="Slide 4">
-          <img src="img5.png" class="slide" alt="Slide 5">
-        </div>
-      </div>
-      <div class="side-text">
-        <h3>Notas Focadas no Conteúdo</h3>
-        <ul>
-          <li>Conteúdos diversos para ensino médio e cursinho</li>
-          <li>Entendimento aprofundado da matéria com exercícios</li>
-          <li>Troque de Professor quando quiser</li>
-        </ul>
+
+  <!-- SLIDESHOW + LATERAL -->
+  <div class="about-content">
+    <div class="slideshow-container">
+      <h3>Notas desenvolvidas pelos professores</h3>
+      <div class="slideshow">
+        <img src="img1.png" class="slide active" alt="Slide 1">
+        <img src="img2.png" class="slide" alt="Slide 2">
+        <img src="img3.png" class="slide" alt="Slide 3">
+        <img src="img4.png" class="slide" alt="Slide 4">
+        <img src="img5.png" class="slide" alt="Slide 5">
       </div>
     </div>
-  </section>
+    <div class="side-text">
+      <h3>Notas Focadas no Conteúdo</h3>
+      <ul>
+        <li>Conteúdos diversos para ensino médio e cursinho</li>
+        <li>Entendimento aprofundado da matéria com exercícios</li>
+        <li>Troque de Professor quando quiser</li>
+      </ul>
+    </div>
+  </div>
 
-  <!-- === NOVA SESSÃO ORIGEM === -->
+  <!-- ORIGIN 2 -->
   <section class="origin">
     <div class="origin-content">
       <div class="text">
         <h2>Listas de Exercícios</h2>
-        <p>Receba listas de exercícios totalmente personalizadas, adaptadas ao seu nível e ritmo de aprendizado. A cada aula, você terá atividades focadas  nos tópicos em que encontra maior dificuldade, garantindo reforço pontual e consistente com exercícios orientados de acordo com os vestibulares que você pretende prestar.</p>
+        <p>Receba listas de exercícios totalmente personalizadas, adaptadas ao seu nível e ritmo de aprendizado. A cada aula, você terá atividades focadas nos tópicos em que encontra maior dificuldade, garantindo reforço pontual e consistente com exercícios orientados de acordo com os vestibulares que você pretende prestar.</p>
       </div>
       <div class="image">
-        <img src="Listamodelo.png" alt="Origem do Grupo Vetorial">
+        <img src="Listamodelo.png" alt="Listas de Exercícios">
       </div>
     </div>
   </section>
 
+  <!-- CONTATO -->
+  <section id="Contato" class="contact-form">
+    <h2>Converse Conosco!</h2>
+    <form action="https://formspree.io/f/mgvyjggw" method="POST">
+      <label>
+        Name <span>(obrigatório)</span><br>
+        <input type="text" name="Name" placeholder="Ex: Vinicius Di Lorenzo" required>
+      </label>
+      <label>
+        Email <span>(obrigatório)</span><br>
+        <input type="email" name="Email" placeholder="Ex: institutovetorial@gmail.com" required>
+      </label>
+      <label>
+        Celular com DDD <span>(obrigatório)</span><br>
+        <input type="tel" name="Celular" placeholder="Ex: +55 11 99237-3777" required>
+      </label>
+      <label>
+        Como você ficou sabendo a nosso respeito?<br>
+        <select name="Origem">
+          <option value="">Selecionar uma opção</option>
+          <option>Redes Sociais</option>
+          <option>Indicação</option>
+          <option>Busca Google</option>
+          <option>Outro</option>
+        </select>
+      </label>
+      <label>
+        Outros detalhes<br>
+        <textarea name="Detalhes" placeholder="Conte-nos mais sobre o que você precisa"></textarea>
+      </label>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
 
+  <div id="formspree-message" style="display:none; max-width:800px; margin:20px auto; padding:1rem; text-align:center; background:#e6ffed; color:#064e2e; border:1px solid #0f5132; border-radius:4px; font-family:'Open Sans',sans-serif;">
+    Mensagem enviada, obrigado pela preferência!
+  </div>
+
+  <!-- Slideshow simples -->
   <script>
     let slideIndex = 0;
     const slides = document.querySelectorAll('.slide');
@@ -542,73 +530,36 @@ html, body {
       showSlide(slideIndex);
     }, 5000);
   </script>
-<!-- === SEÇÃO DE CONTATO (Formspree) === -->
-<section id="Contato" class="contact-form">
-  <h2>Converse Conosco!</h2>
-  <form action="https://formspree.io/f/mgvyjggw" method="POST">
-    <label>
-      Name <span>(obrigatório)</span><br>
-      <input type="text" name="Name" placeholder="Ex: Vinicius Di Lorenzo" required>
-    </label>
-    <label>
-      Email <span>(obrigatório)</span><br>
-      <input type="email" name="Email" placeholder="Ex: institutovetorial@gmail.com" required>
-    </label>
-    <label>
-      Celular com DDD <span>(obrigatório)</span><br>
-      <input type="tel" name="Celular" placeholder="Ex: +55 11 99237-3777" required>
-    </label>
-    <label>
-      Como você ficou sabendo a nosso respeito?<br>
-      <select name="Origem">
-        <option value="">Selecionar uma opção</option>
-        <option>Redes Sociais</option>
-        <option>Indicação</option>
-        <option>Busca Google</option>
-        <option>Outro</option>
-      </select>
-    </label>
-    <label>
-      Outros detalhes<br>
-      <textarea name="Detalhes" placeholder="Conte-nos mais sobre o que você precisa"></textarea>
-    </label>
-    <button type="submit">Enviar</button>
-  </form>
-</section>
-<!-- === MENSAGEM DE CONFIRMAÇÃO AJAX === -->
-<div id="formspree-message" style="display:none; max-width:800px; margin:20px auto; padding:1rem; text-align:center; background:#e6ffed; color:#064e2e; border:1px solid #0f5132; border-radius:4px; font-family:'Open Sans',sans-serif;">
-  Mensagem enviada, obrigado pela preferência!
-</div>
-<!-- === AJAX PARA FORMULÁRIO SEM REDIRECIONAR === -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('.contact-form form');
-    const msgBox = document.getElementById('formspree-message');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(response => {
-        if (response.ok) {
-          msgBox.style.display = 'block';
-          form.reset();
-        } else {
-          response.json().then(data => {
-            msgBox.textContent = data.error || 'Ocorreu um erro, tente novamente.';
+
+  <!-- Formspree: submit sem redirecionar -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('.contact-form form');
+      const msgBox = document.getElementById('formspree-message');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+          if (response.ok) {
             msgBox.style.display = 'block';
-          });
-        }
-      })
-      .catch(() => {
-        msgBox.textContent = 'Falha de rede, tente novamente.';
-        msgBox.style.display = 'block';
+            form.reset();
+          } else {
+            response.json().then(data => {
+              msgBox.textContent = data.error || 'Ocorreu um erro, tente novamente.';
+              msgBox.style.display = 'block';
+            });
+          }
+        })
+        .catch(() => {
+          msgBox.textContent = 'Falha de rede, tente novamente.';
+          msgBox.style.display = 'block';
+        });
       });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
