@@ -370,6 +370,76 @@
         box-sizing: border-box;
       }
     }
+/* ===== OPORTUNIDADES — full-bleed sem overflow ===== */
+
+/* 1) neutraliza o background antigo da própria seção */
+.opportunities {
+  position: relative;
+  background: none !important;   /* remove o background-image anterior */
+  overflow-x: clip;              /* evita qualquer arrasto lateral */
+}
+
+/* 2) fundo que sempre toca as bordas do viewport (esq/dir) */
+.opportunities::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* este calc estica exatamente do lado esquerdo ao direito do viewport */
+  left:  calc(50% - 50vw);
+  right: calc(50% - 50vw);
+
+  background: url("bannerlivro.png") center / cover no-repeat;
+  z-index: 0;
+}
+
+/* 3) sobreposição escura por cima do fundo (igual ao que você tinha) */
+.opportunities::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left:  calc(50% - 50vw);
+  right: calc(50% - 50vw);
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+/* 4) garante que o conteúdo fique acima do fundo/overlay */
+.opportunities > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* 5) ajustes no mobile mantidos (centralização + respiro) */
+@media (max-width: 768px) {
+  .opportunities {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+  .opportunities-grid {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    text-align: center !important;
+    gap: 1.2rem;
+  }
+  .opportunity-item { width: 100%; max-width: 32rem; padding-inline: 8px; }
+  .opportunity-item h3,
+  .opportunity-item p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .opportunity-item p {
+    width: 100%;
+    max-width: 28rem;
+    line-height: 1.5;
+    padding-left: 12px;
+    padding-right: 12px;
+    box-sizing: border-box;
+  }
+}
+
   </style>
 </head>
 <body>
