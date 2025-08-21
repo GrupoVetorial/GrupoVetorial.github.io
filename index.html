@@ -382,11 +382,18 @@
 }
 @media (max-width: 768px) {
   /* Grid em 1 coluna, conteúdo centralizado */
+  .opportunities {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
   .opportunities-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
     justify-items: center !important;
     text-align: center !important;
+  }
+  .opportunities-grid .opportunity-item {
+    padding-inline: 8px;
   }
 
   /* Força cada card a centralizar título e texto */
