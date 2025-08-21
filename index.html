@@ -94,16 +94,16 @@
     .hero h1 {
       font-size: 2rem;
       font-family: 'Montserrat', sans-serif;
-      line-height: 1.5;
+      line-height: 1.0;
       margin: 0.5em 0;
       text-wrap: balance; 
     }
-    .hero p {
-      font-size: 1.25rem;
-      font-family: 'Montserrat', sans-serif;
-      line-height: 0.25;
-      margin: 0.5em 0 1.5em;
-    }
+.hero p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(16px, 4.2vw, 22px);
+  line-height: 1.5;            /* antes: 0.25 */
+  margin: 0 0 1.2em;
+}
     .hero::before {
       content: "";
       position: absolute;
