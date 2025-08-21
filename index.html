@@ -15,36 +15,25 @@
       background-color: white;
     }
 
-  .header {
+ .header {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* desktop: tudo em linha */
   padding: 10px 20px;
   background-color: #fff;
 }
 
-/* Header completo (desktop) */
-.header-desktop { justify-content: space-between; }
-
-/* Por padrão, o header mobile fica oculto no desktop */
-.header-mobile { display: none; }
-
-/* Título e logo (desktop) */
+/* Logo e Título (sem margens gigantes) */
+.site-logo { display: block; margin: 0 10px 0 0; }
 .site-title {
   font-size: 36px;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   text-decoration: none;
   color: #000;
-  /* REMOVER margens fixas que quebram no mobile */
-  margin: 0 10px;
+  margin: 0 10px;            /* REMOVIDO margin-right:600px */
 }
-.site-title:hover { color: #000080; transition: color 0.3s; }
-
-.site-logo {
-  display: block;
-  /* REMOVER align-items (não funciona em block) e margem fixa enorme */
-  margin: 6px 10px 0 0; /* topo 6px, direita 10px */
-}
+.site-title:hover { color: #000080; transition: color .3s; }
 
 .button {
   display: flex;
@@ -56,27 +45,22 @@
   background-color: transparent;
   color: #000;
   border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color .3s, color .3s;
 }
-.button:hover { background-color: #000; color: #fff; }
+.button:hover { background:#000; color:#fff; }
 
-/* ===== Mobile ===== */
+/* ===== Mobile (até 768px) ===== */
 @media (max-width: 768px) {
-  /* some com o header completo e mostra o reduzido */
-  .header-desktop { display: none; }
-  .header-mobile {
-    display: flex;
-    justify-content: center;  /* centraliza logo + título */
-    align-items: center;
+  /* Some com os botões e centralize logo + nome */
+  .button { display: none; }
+  .header {
+    justify-content: center;   /* centraliza tudo */
     gap: 10px;
-    padding: 12px 16px;
   }
-
-  /* Deixe logo + título realmente centrados no mobile */
   .site-logo { margin: 0; }
   .site-title {
     font-size: 24px;
-    margin: 0;               /* zera margens que empurravam pro lado */
+    margin: 0;
     text-align: center;
   }
 }
@@ -384,8 +368,7 @@
   </style>
 </head>
 <body>
- <!-- Header completo (desktop) -->
-<div class="header header-desktop">
+<div class="header">
   <a href="index.html" class="site-logo">
     <img src="logo1.png" height="45" width="45" alt="Logo Grupo Vetorial">
   </a>
@@ -395,14 +378,6 @@
   <a href="#Contato" class="button">Entre em contato</a>
 </div>
 
-<!-- Header reduzido (mobile) -->
-<div class="header header-mobile">
-  <a href="index.html" class="site-logo">
-    <img src="logo1.png" height="45" width="45" alt="Logo Grupo Vetorial">
-  </a>
-  <a href="index.html" class="site-title">Grupo Vetorial</a>
-</div>
-<div class="gray-bar"></div>
   <!-- === HERO === -->
   <div class="hero">
     <h1>Aprender, crescer, vencer.</h1>
