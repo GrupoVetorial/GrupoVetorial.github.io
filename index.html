@@ -520,7 +520,23 @@
   .side-text {
     display: none !important;
   }
-}
+.origin-content {
+    flex-direction: column;
+    align-items: center;   /* centraliza o bloco */
+    text-align: center;    /* centraliza textos */
+  }
+
+  .origin-content .image img {
+    width: 90%;
+    max-width: 400px;      /* limite para não crescer demais */
+    margin: 0 auto;        /* centraliza a imagem */
+    display: block;
+  }
+
+  .origin-content .text p {
+    text-align: center;    /* parágrafos centralizados no mobile */
+  }
+}	
 }
 
   </style>
