@@ -383,8 +383,14 @@
 @media (max-width: 768px) {
   /* Grid em 1 coluna, conteúdo centralizado */
   .opportunities {
+    width: 100% !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    /* e mantém o respiro nas bordas */
     padding-left: max(16px, env(safe-area-inset-left));
     padding-right: max(16px, env(safe-area-inset-right));
+    background-position: center;   /* opcional: fixa o enquadramento */
+    background-size: cover;        /* você já usa, só reforçando */
   }
   .opportunities-grid {
     display: grid !important;
