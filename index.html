@@ -369,19 +369,41 @@
         padding-right: 12px;
         box-sizing: border-box;
       }
-.about-content {
-    flex-direction: column;   /* empilha no mobile */
-    align-items: center;
-  }
-  .slideshow-container {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-  .side-text {
-    display: none; /* esconde texto lateral no mobile */
-  }
     }
-/* ===== OPORTUNIDADES — full-bleed sem overflow ===== */
+@media (max-width: 768px) {
+  /* empilha e centraliza a seção */
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* slideshow ocupa toda a largura no mobile */
+  .slideshow-container {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* esconde o bloco de texto lateral */
+  .side-text { 
+    display: none !important; 
+  }
+
+  /* fallback: se houver qualquer outro filho além do slideshow, esconda */
+  .about-content > :not(.slideshow-container) {
+    display: none !important;
+  }
+
+  /* altura mais amigável do slideshow no mobile (opcional) */
+  .slideshow {
+    height: clamp(220px, 45vh, 360px);
+  }
+
+  /* espaço no título do slideshow (opcional) */
+  .slideshow-container h3 {
+    margin-top: 16px;
+  }
+}
 
 /* 1) neutraliza o background antigo da própria seção */
 .opportunities {
