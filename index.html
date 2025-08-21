@@ -395,8 +395,17 @@
   }
 
   /* altura mais amigável do slideshow no mobile (opcional) */
-  .slideshow {
-    height: clamp(220px, 45vh, 360px);
+ .slideshow {
+    width: 100%;
+    max-width: 500px;     /* limita a largura no centro */
+    height: auto;         /* altura automática, acompanha a proporção da imagem */
+    margin: 0 auto;       /* centraliza */
+  }
+
+  .slideshow img {
+    width: 100%;          /* faz a imagem ocupar todo o espaço disponível */
+    height: auto;         /* mantém proporção */
+    object-fit: contain;  /* evita cortes, ajusta dentro do box */
   }
 
   /* espaço no título do slideshow (opcional) */
