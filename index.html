@@ -115,7 +115,7 @@
       z-index: 2;
     }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .hero { min-height: 60vh; padding: 0 16px; }
   .hero h1 { font-size: clamp(24px, 8vw, 34px); }
   .hero p  { font-size: clamp(14px, 4.8vw, 18px); }
@@ -125,52 +125,34 @@
   .header a.button { 
     display: none !important;
   }
-
- /* Desliga o hack de full-bleed no mobile para permitir centralização */
-  #oportunidades.opportunities {
-    width: auto !important;
-    left: auto !important;
-    margin-left: 0 !important;
-    padding: 56px 16px !important;
-    text-align: center !important;
-  }
-
-  /* Força 1 coluna e centraliza os itens da grid */
-  #oportunidades.opportunities .opportunities-grid {
+}
+}
+/* ===== OPORTUNIDADES — MOBILE HARD FIX (≤768px) ===== */
+@media (max-width: 768px) {
+  /* Grid em 1 coluna, conteúdo centralizado */
+  .opportunities-grid {
+    display: grid !important;
     grid-template-columns: 1fr !important;
     justify-items: center !important;
-    gap: 1.2rem !important;
-    text-align: center !important; /* vence o text-align:left anterior */
-  }
-
-  /* Centraliza conteúdo de cada card */
-  #oportunidades.opportunities .opportunities-grid .opportunity-item {
     text-align: center !important;
-    width: 100%;
-    max-width: 32rem; /* largura confortável */
   }
 
-  /* Título e texto dos cards centralizados e com largura limitada */
-  #oportunidades.opportunities .opportunity-item h3,
-  #oportunidades.opportunities .opportunity-item p {
+  /* Força cada card a centralizar título e texto */
+  .opportunity-item,
+  .opportunity-item h3,
+  .opportunity-item p {
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
-  #oportunidades.opportunities .opportunity-item p {
+
+  /* Limita largura do parágrafo para não ficar "estourado" */
+  .opportunity-item p {
     max-width: 28rem !important;
-    line-height: 1.45 !important;
+    line-height: 1.5 !important;
   }
+}
 
-  /* Centraliza título e subtítulo da seção */
-  #oportunidades.opportunities h2,
-  #oportunidades.opportunities p.subtitle {
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-}
 
     /* === SEÇÃO DE OPORTUNIDADES === */
     .opportunities {
